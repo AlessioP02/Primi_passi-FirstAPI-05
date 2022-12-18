@@ -4,6 +4,7 @@ import com.example.Primi_passiFirstAPI05.DTO.CarDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,9 +20,9 @@ public class CarController {
 
 
     @PostMapping("/")
-    public String postCar(@Valid @RequestBody(required = false) CarDTO car, HttpServletRequest request, HttpServletResponse response){
+    public String postCar(@Valid @RequestBody(required = false) CarDTO car, HttpStatus httpStatus){
 
-        return car.toString();
+        return car.toString() + httpStatus.CREATED;
     }
 
 }
